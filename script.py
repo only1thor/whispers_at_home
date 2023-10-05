@@ -5,11 +5,16 @@ os.environ["REQUESTS_CA_BUNDLE"] = "/etc/pki/ca-trust/extracted/pem/tls-ca-bundl
 
 asr = pipeline(
     "automatic-speech-recognition",
-    "NbAiLab/nb-whisper-medium-beta"
+    "NbAiLab/nb-whisper-medium-beta",
+    chunk_length_s=10
 )
 text = asr(
-    "data/2023_10_05-0710-siste_nytt_vg.mp3",
+    "data/out.wav",
     generate_kwargs={'task': 'transcribe', 'language': 'no'},
     return_timestamps=True,
+    batch_size=2
 )
-print(text)
+for chunk in text['chunks']:
+    print(chunk['timestamp'])
+    print(chunk['text'])
+print("done")

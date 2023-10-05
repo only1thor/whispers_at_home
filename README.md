@@ -1,5 +1,7 @@
 # whispers_at_home
 
+Project to learn how to use ready-made models from huggingface. This one is for running the Norwegian Whisper model. 
+
 ## First:
 
 ```bash
@@ -16,6 +18,9 @@ python3.9 script.py
   - Remember to select System Interpeter on the type of interpeter to add, then select the python binary in the venv. 
 - unselect any frameworks it finds. there are none in this project.  
 
+## Convert to wav
+```bash 
+docker run --rm -it -v ./data:/data linuxserver/ffmpeg -i /data/2023_10_05-0710-siste_nytt_vg.mp3  -ac 1 -ar 16000 /data/2023_10_05-0710-siste_nytt_vg.wav
+```
 
-Project to learn how to use ready-made models from huggingface. This one is for running the Norwegian Whisper model. 
 
